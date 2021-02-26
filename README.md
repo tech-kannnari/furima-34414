@@ -6,15 +6,15 @@
 
 | Column                | Type    | Options     |
 | --------------------- | ------- | ----------- |
-| nickname              | string  | null: false |
-| email                 | string  | null: false |
-| password              | string  | null: false |
-| password_confirmation | string  | null: false |
-| last_name             | string  | null: false |
-| name                  | string  | null: false |
-| last_cana             | string  | null: false |
-| cana                  | string  | null: false |
-| birthday              | integer | null: false |  
+| nickname              | string | null: false |
+| email                 | string | null: false |
+| password              | string | null: false |
+| encrypted_password    | string | null: false |
+| last_name             | string | null: false |
+| name                  | string | null: false |
+| last_kana             | string | null: false |
+| kana                  | string | null: false |
+| birthday              | date   | null: false |  
 
 ### Association
 
@@ -25,13 +25,18 @@
 
 ## items テーブル
 
-| Column      | Type       | Options                       |
-| ----------- | ---------- | ----------------------------- |
-| item_name   | string     | null: false                   |
-| description | text       | null: false                   |
-| category    | integer    | null: false                   | 
-| item_status | integer    | null: false,                  | 
-| user        | references | null: false, foreign_key:true |
+| Column        | Type       | Options                       |
+| ------------- | ---------- | ----------------------------- |
+| item_name     | string     | null: false                   |
+| description   | text       | null: false                   |
+| category      | integer    | null: false                   | 
+| item_status   | integer    | null: false,                  | 
+| delivery_fee  | integer    | null: false                   | 
+| delivery_area | integer    | null: false,                  |
+| delivery_day  | integer    | null: false                   | 
+| price         | integer    | null: false,                  |  
+| user          | references | null: false, foreign_key:true |
+
 
 //imageはActiveStorageで実装
 
@@ -65,7 +70,7 @@
 
 | Column      | Type       | Options                       |
 | ----------- | ---------- | ----------------------------- |
-| item_name   | string     | null: false                   |
+| item_name   | references | null: false, foreign_key:true |
 | user        | references | null: false, foreign_key:true |
 
 ### Association
