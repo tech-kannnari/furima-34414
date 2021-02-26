@@ -4,16 +4,16 @@
 
 ## users テーブル
 
-| Column                | Type   | Options      |
-| --------------------- | ------ | ------------ |
-| nickname              | string | null: false  |
-| email                 | string | unique: true |
-| encrypted_password    | string | null: false  |
-| last_name             | string | null: false  |
-| name                  | string | null: false  |
-| last_kana             | string | null: false  |
-| kana                  | string | null: false  |
-| birthday              | date   | null: false  |  
+| Column                | Type   | Options                   |
+| --------------------- | ------ | ------------------------- |
+| nickname              | string | null: false               |
+| email                 | string | null: false, unique: true |
+| encrypted_password    | string | null: false               |
+| last_name             | string | null: false               |
+| name                  | string | null: false               |
+| last_kana             | string | null: false               |
+| kana                  | string | null: false               |
+| birthday              | date   | null: false               |  
 
 ### Association
 
@@ -46,15 +46,15 @@
 
 ## buyers テーブル
 
-| Column         | Type       | Options                       |
-| -------------- | ---------- | ----------------------------- |
-| postal_code    | string     | null: false                   |
-| area_id        | integer    | null: false                   |
-| municipalities | string     | null: false                   | 
-| address        | string     | null: false,                  | 
-| building       | string     |                               |
-| phone_number   | string     | null: false,                  | 
-| user           | references | null: false, foreign_key:true |
+| Column           | Type       | Options                       |
+| ---------------- | ---------- | ----------------------------- |
+| postal_code      | string     | null: false                   |
+| delivery_area_id | references | null: false, foreign_key:true |
+| municipalities   | string     | null: false                   | 
+| address          | string     | null: false,                  | 
+| building         | string     |                               |
+| phone_number     | string     | null: false,                  | 
+| history          | references | null: false, foreign_key:true |
 
 ### Association
 
