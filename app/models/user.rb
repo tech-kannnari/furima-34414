@@ -29,10 +29,14 @@ class User < ApplicationRecord
     message: "全角カタカナのみで入力して下さい"
     }
     validates :birthday
+
+    validates :password, 
+      format: {
+      with: /\A(?=.*?[a-z])(?=.*?[\d])\w{6,20}\z/,
+      message: "には半角英字と数字の両方を含めて6文字以上で設定してください"
+      }
   end
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])\w{6,12}\z/.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
 
 end
 
