@@ -25,7 +25,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it 'emailは同じものは登録できない' do
-        binding.pry
          @user.save
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
