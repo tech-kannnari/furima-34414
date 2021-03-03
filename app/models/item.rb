@@ -14,7 +14,6 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :description
-    validates :price
 
     with_options numericality: { other_than: 1 } do
       validates :category_id
@@ -23,8 +22,11 @@ class Item < ApplicationRecord
       validates :delivery_area_id
       validates :delivery_day_id 
     end
+    validates :price, format: with: numericality: 
+    { only_integer: true, greater_than: 300, less_than: 9999999 }
   end
 end
+
 
 
 
