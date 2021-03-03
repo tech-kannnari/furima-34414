@@ -1,4 +1,5 @@
-class Item_status < ActiveHash::Base
+# classの命名の際に_は使ってはいけない。代わりに大文字にする。
+class ItemStatus < ActiveHash::Base
   self.data = [
     { id: 1,  name: '--' },
     { id: 2,  name: '新品、未使用' },
