@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  # アクセスがあったら"items#index"へルーティングされますよ
+  # アクセスがあったら"items#index"へルーティングする
   root to: "items#index"
+  resources :items, only:[:new, :create]
 
 end
 
