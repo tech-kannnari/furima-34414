@@ -65,7 +65,7 @@ RSpec.describe Item, type: :model do
       it 'priceが存在しない時登録できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")  
+        expect(@item.errors.full_messages).to include("Price には300~9999999の半角英数字を入力してください")  
       end
 
       it '[price < 300]の時登録できない' do
