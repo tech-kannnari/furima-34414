@@ -25,6 +25,12 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    
+    if @item.user == current_user
+      render :edit
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -36,7 +42,7 @@ class ItemsController < ApplicationController
     end
   end
 
-
+private
 
   def item_params
     params.require(:item).permit(:image, :name, :description, :category_id, :item_status_id, :delivery_fee_id, 
