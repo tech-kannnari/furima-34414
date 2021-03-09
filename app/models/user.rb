@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :histories
 
   # validates :email, uniqueness: true ← こちらはuserのmigrateファイル内にデフォルトでバリデイトされているので記述はいらない
   with_options presence: true do
