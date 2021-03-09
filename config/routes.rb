@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # アクセスがあったら"items#index"へルーティングする
   root to: "items#index"
   resources :items
-  resources :histories, only:[:index]
+  resources :histories, only:[:index, :new, :create]
 
 end
 
