@@ -49,7 +49,7 @@
 | Column           | Type       | Options                       |
 | ---------------- | ---------- | ----------------------------- |
 | postal_code      | string     | null: false                   |
-| delivery_area_id | references | null: false, foreign_key:true |
+| delivery_area_id | integer    | null: false,                  |
 | municipalities   | string     | null: false                   | 
 | address          | string     | null: false,                  | 
 | building         | string     |                               |
