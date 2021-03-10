@@ -1,6 +1,7 @@
 class HistoriesController < ApplicationController
 
   def index
+    @history = Item.find(params[:item_id])
     @history_buyer = HistoryBuyer.new
   end
 
@@ -11,7 +12,7 @@ class HistoriesController < ApplicationController
     @history_buyer = HistoryBuyer.new(history_params)
     if @history_buyer.valid?
       @history_buyer.save
-      redirect_to item_path(@item.id)
+      redirect_to root
     else
       render :new
     end
