@@ -2,7 +2,7 @@ class HistoriesController < ApplicationController
 
   before_action :authenticate_user!, only: [:index, :create]
   before_action :find_params, only:[:index, :create]
-
+  before_action :redirect_to_root, only:[:index, :create]
 
   def index
     @history_buyer = HistoryBuyer.new
@@ -42,4 +42,9 @@ class HistoriesController < ApplicationController
     @history = Item.find(params[:item_id])
   end
 
+  def redirect_to_root
+    if @history.user == current_user
+      redirect_to root_path
+    end
+  end
 end
