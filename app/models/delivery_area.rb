@@ -51,6 +51,6 @@ class DeliveryArea < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :item
-
-  end
+  has_many :items
+  has_many :histories
+end
