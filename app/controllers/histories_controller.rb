@@ -7,9 +7,6 @@ class HistoriesController < ApplicationController
     @history_buyer = HistoryBuyer.new
   end
 
-  def new
-  end
-
   def create
     @history_buyer = HistoryBuyer.new(history_params)
     if @history_buyer.valid?
