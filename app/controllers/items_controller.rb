@@ -1,12 +1,11 @@
 class ItemsController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :find_params, only:[:show, :edit, :update, :destroy]
-  before_action :redirect_to_root, only:[:show, :edit, :update, :destory]
-  before_action :history_present, only:[:edit, :update]
+  before_action :find_params, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_to_root, only: [:show, :edit, :update, :destory]
+  before_action :history_present, only: [:edit, :update]
 
   def index
-     @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -41,11 +40,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-private
+  private
 
   def item_params
-    params.require(:item).permit(:image, :name, :description, :category_id, :item_status_id, :delivery_fee_id, 
-      :delivery_area_id, :delivery_day_id, :price).merge(user_id: current_user.id) 
+    params.require(:item).permit(:image, :name, :description, :category_id, :item_status_id, :delivery_fee_id,
+                                 :delivery_area_id, :delivery_day_id, :price).merge(user_id: current_user.id)
   end
 
   def find_params
@@ -53,15 +52,10 @@ private
   end
 
   def redirect_to_root
-    unless @item.user == current_user
-      redirect_to root_path
-    end
+    redirect_to root_path unless @item.user == current_user
   end
 
   def history_present
-    if @item.history.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.history.present?
   end
-
 end
