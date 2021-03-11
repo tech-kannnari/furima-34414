@@ -1,7 +1,8 @@
 class HistoriesController < ApplicationController
 
   before_action :authenticate_user!, only: [:index, :create]
-  
+  before_action :find_params, only:[:index, :create]
+
 
   def index
     @history_buyer = HistoryBuyer.new
@@ -37,5 +38,8 @@ class HistoriesController < ApplicationController
       )
   end
 
+  def find_params
+    @history = Item.find(params[:item_id])
+  end
 
 end
