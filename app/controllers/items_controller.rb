@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_params, only:[:show, :edit, :update, :destroy]
-  before_action :redirect_to_root, only:[:edit, :update, :destory]
+  before_action :redirect_to_root, only:[:show, :edit, :update, :destory]
+  before_action :history_present, only:[:edit, :update]
 
   def index
      @items = Item.all.order("created_at DESC")
@@ -53,6 +54,12 @@ private
 
   def redirect_to_root
     unless @item.user == current_user
+      redirect_to root_path
+    end
+  end
+
+  def history_present
+    if @item.history.present?
       redirect_to root_path
     end
   end
