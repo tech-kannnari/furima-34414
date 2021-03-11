@@ -7,9 +7,5 @@ FactoryBot.define do
     address          { '中央' }
     building         { 'メゾン' }
     phone_number     { '0000000000' }
-    history          { 2 }
-    user             { 2 }
-    user_id          { 2 }
-    item_id          { 2 }
   end
 end
