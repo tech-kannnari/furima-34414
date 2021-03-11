@@ -1,7 +1,9 @@
 class HistoriesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:index, :create]
+  
+
   def index
-    @history = Item.find(params[:item_id])
     @history_buyer = HistoryBuyer.new
   end
 
@@ -9,7 +11,6 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    @history = Item.find(params[:item_id])
     @history_buyer = HistoryBuyer.new(history_params)
     if @history_buyer.valid?
       pay_item
@@ -35,5 +36,6 @@ class HistoriesController < ApplicationController
         currency: 'jpy'
       )
   end
+
 
 end
