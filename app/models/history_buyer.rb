@@ -11,6 +11,8 @@ class HistoryBuyer
     validates :address
     validates :building
     validates :phone_number, format: { with: /\A[0-9]{10,11}+\z/, message: '半角数字10~11文字以内で入力してください' }
+    validates :user_id
+    validates :item_id
   end
 
   def save
