@@ -6,6 +6,7 @@ RSpec.describe HistoryBuyer, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @history_buyer = FactoryBot.build(:history_buyer, user_id: user.id, item_id: item.id)
+      sleep(1)
     end
 
     it 'すべての値が正しく入力されていれば保存できること' do
