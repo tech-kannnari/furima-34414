@@ -83,5 +83,17 @@ RSpec.describe HistoryBuyer, type: :model do
       @history_buyer.valid?
       expect(@history_buyer.errors.full_messages).to include('Phone number 半角数字10~11文字以内で入力してください')
     end
+
+    it 'user_idが空では保存できないこと' do
+      @history_buyer.user_id = nil
+      @history_buyer.valid?
+      expect(@history_buyer.errors.full_messages).to include("User can't be blank")
+    end
+
+    it 'item_idが空では保存できないこと' do
+      @history_buyer.item_id = nil
+      @history_buyer.valid?
+      expect(@history_buyer.errors.full_messages).to include("Item can't be blank")
+    end
   end
 end
