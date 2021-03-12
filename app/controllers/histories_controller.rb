@@ -40,5 +40,6 @@ class HistoriesController < ApplicationController
 
   def redirect_to_root
     redirect_to root_path if @history.user == current_user
+    redirect_to root_path if @history.history.present?
   end
 end
